@@ -407,32 +407,40 @@
     <div class="containerr">
       <div class="forms-container">
         <div class="signin-signup">
-          <form method="POST" action="/login" class="sign-in-form">
+          <form method="POST" action="/login" class="sign-in-form" onsubmit="allCheckLogin()">
             <h2 class="title">Sign in</h2>
             <div class="input-field">
               <i class="fas fa-envelope"></i>
-              <input name="email" type="email" placeholder="Email" />
+              <input name="email" onkeyup="logEmailCheck()" id="LogEmailInput" type="text" placeholder="Email" />
             </div>
+            <div style=" height: 20px; margin-bottom: 5px; width: 18rem; color: #D8000C;"><span id="logEmailSpan"></span></div>
+            
             <div class="input-field">
               <i class="fas fa-lock"></i>
-              <input name="password" type="password" placeholder="Password" />
+              <input name="password" type="password" id="LogpassInput" onkeyup="logPassCheck()" placeholder="Password" />
+              
             </div>
+            <div style=" height: 20px; margin-bottom: 5px; width: 18rem; color: #D8000C;"><span id="logPassSpan">{{error}}</span></div>
+            
             <input type="submit" value="Login" class="btn solid" />
           </form>
-          <form method="POST" action="/signup" class="sign-up-form">
+          <form method="POST" action="/signup" class="sign-up-form" onsubmit="allCheckSignup()">
             <h2 class="title">Sign up</h2>
             <div class="input-field">
               <i class="fas fa-user"></i>
-              <input name="name" type="text" placeholder="Username" />
+              <input name="name" id="signNameInput" onkeyup="signNameCheck()" type="text" placeholder="Username" />
             </div>
+            <div  style=" height: 20px; margin-bottom: 5px; width: 18rem; color: #D8000C;"><span id="signNameSpan"></span></div>
             <div class="input-field">
               <i class="fas fa-envelope"></i>
-              <input name="email" type="email" placeholder="Email" />
+              <input name="email" type="text" id="signEmailInput" onkeyup="signEmailCheck()" placeholder="Email" />
             </div>
+            <div style=" height: 20px; margin-bottom: 5px; width: 18rem; color: #D8000C;"><span id="signEmailSpan"></span></div>
             <div class="input-field">
               <i class="fas fa-lock"></i>
-              <input name="password" type="password" placeholder="Password" />
+              <input name="password" id="signPassInput" onkeyup="signPassCheck()" type="password" placeholder="Password" />
             </div>
+            <div style=" height: 20px; margin-bottom: 5px; width: 18rem; color: #D8000C;"><span id="signPassSpan"></span></div>
             <input type="submit" class="btn" value="Sign up" />
           </form>
         </div>
@@ -480,6 +488,111 @@ sign_up_btn.addEventListener("click", () => {
 sign_in_btn.addEventListener("click", () => {
   containerr.classList.remove("sign-up-mode");
 });
+
+</script>
+
+<script>
+  function logEmailCheck(){
+    var email = document.getElementById("LogEmailInput").value
+    const letters = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/
+    if(email ==""){
+      document.getElementById('logEmailSpan').innerHTML="Field is required"
+      return false
+    }else if(email.match(letters)){
+      document.getElementById('logEmailSpan').innerHTML=""
+      return true
+    }else{
+      document.getElementById('logEmailSpan').innerHTML="Enter valid email"
+      return false
+    }
+  }
+  function logPassCheck(){
+    var pass = document.getElementById('LogpassInput').value
+    var len = pass.length
+    if(pass ==""){
+      document.getElementById('logPassSpan').innerHTML="Field is required"
+      return false
+    }else if(len<=3){
+      document.getElementById('logPassSpan').innerHTML="Password is Too short"
+      return false
+    }else{
+      document.getElementById("logPassSpan").innerHTML=""
+      return true
+    }
+  }
+
+  function allCheckLogin(){
+    if(logEmailCheck() && logPassCheck()){
+      return true
+    }else{
+      logEmailCheck()
+      logPassCheck()
+      event.preventDefault()
+      return false
+    }
+  }
+
+  function signNameCheck(){
+    var name = document.getElementById('signNameInput').value
+    var letters = /^[a-zA-Z\s]*$/;
+    if(name ==""){
+      document.getElementById("signNameSpan").innerHTML="Field is required"
+      return false
+    }else if(name.match(letters)){
+      document.getElementById("signNameSpan").innerHTML=""
+      return true
+    }else{
+      document.getElementById("signNameSpan").innerHTML="Enter valid name"
+      return false
+    }
+  }
+
+  function signEmailCheck(){
+    var email = document.getElementById("signEmailInput").value
+    const letters = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/
+    if(email == ""){
+      document.getElementById("signEmailSpan").innerHTML="Field is required"
+      return false
+    }else if(email.match(letters)){
+      document.getElementById("signEmailSpan").innerHTML=""
+      return true
+    }else{
+      document.getElementById("signEmailSpan").innerHTML="Enter valid email"
+      return false
+    }
+  }
+
+  function signPassCheck(){
+    var pass =document.getElementById("signPassInput").value
+    var len = pass.length
+    if(pass ==""){
+      document.getElementById('signPassSpan').innerHTML="Field is required"
+      return false
+    }else if(len<=3){
+      document.getElementById('signPassSpan').innerHTML="Password is Too short"
+      return false
+    }else{
+      document.getElementById("signPassSpan").innerHTML=""
+      return true
+    }
+  }
+
+  function allCheckSignup(){
+    if(signNameCheck() && signEmailCheck() && signPassCheck()){
+      return true
+    }else{
+      signNameCheck() 
+      signEmailCheck()
+      signPassCheck()
+
+      event.preventDefault()
+      return false
+
+    }
+
+  }
+
+
 
 </script>
 

@@ -1,3 +1,99 @@
-<section>
-    
-</section>
+<header class="headerSection position-fixed fontfam">
+        <div class="container">
+            <div class="col-md-12">
+            <div class="row">
+                <div class="homeHeadLeft">
+                    <h2>Admin Panel</h2>
+                </div>
+                <div class="homeHeadRight"> 
+                    <nav class="navbar navbar-expand-lg navbar-light ">
+                        <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" 
+                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" 
+                        aria-expanded="false" aria-label="Toggle navigation">
+                          <span class="navbar-toggler-icon " ></span>
+                        </button>
+                      
+                        <div class="collapse navbar-collapse ml-auto" id="navbarSupportedContent">
+                          <ul class="navbar-nav ml-auto">
+                            <li class="nav-item">
+                              <a class="nav-link " href="/admin/adminLogout">Logout</a>
+                            </li>
+                        </ul>
+                        </div>
+                      </nav>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+    </header>
+
+    <section id="basic-horizontal-layouts" class="fontfam" style="padding-top: 15rem; justify-content: center; ">
+        <div class="container">
+        <div class="row match-height">
+        {{!-- <div class="col-md-6 col-12"> --}}
+                <div class="card" style="border: 2px solid rgb(203, 211, 254);border-radius: 4px;">
+                    <div class="card-header pb-4 pt-4 text-center" >
+                        <h4 class="card-title">Add User</h4>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-body pt-5">
+                            <form action="/admin/createUSer" method="POST" class="form form-horizontal" onsubmit="addUserAllCheck()"> 
+                                <div class="form-body">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <label>Name</label>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="form-group has-icon-left">
+                                                <div class="position-relative">
+                                                    <input type="text" name="name" onkeyup="addNameCheck()" class="form-control" placeholder="Name"
+                                                        id="addNameInput">
+                                                        <div style="height: 15px; color: #D8000C;"><span id="addNameSpan"></span></div>
+                                                    <div class="form-control-icon">
+                                                        <i class="bi bi-person"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="col-md-4">
+                                            <label>Email</label>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="form-group has-icon-left">
+                                                <div class="position-relative">
+                                                    <input type="text" onkeyup="addEmailCheck()" name="email" class="form-control" placeholder="Email"
+                                                        id="addEmailText">
+                                                        <div style="height: 15px; color: #D8000C;"><span id="addEmailSpan"></span></div>
+                                                    <div class="form-control-icon">
+                                                        <i class="bi bi-envelope"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label>Password</label>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="form-group has-icon-left">
+                                                <div class="position-relative">
+                                                    <input name="password" onkeyup="addPassCheck()" id="addPassText" type="password" class="form-control" placeholder="Password">
+                                                    <div style="height: 15px; color: #D8000C;"><span id="addPassSpan"></span></div>
+                                                    <div class="form-control-icon">
+                                                        <i class="bi bi-lock"></i>
+                                                    </div>
+                                                </div>
+                                            </div>                                       
+                                            <input value="Submit" type="submit" class="btn btn-success me-1 mb-1 text-white">
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            
+        </div>
+     </div>
+    </section>

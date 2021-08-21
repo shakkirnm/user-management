@@ -1,7 +1,7 @@
 var express = require('express');
+const { request } = require('../app');
 const userHelpers = require('../helpers/user-helpers');
 var router = express.Router();
-const adminHelpers  = require('../helpers/user-helpers')
 
 
 router.get('/', (req, res)=> {
@@ -10,7 +10,7 @@ router.get('/', (req, res)=> {
   }else{
     if(req.session.attempt){
       res.header("Cache-Control", "no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0");
-      res.render('adminLogin')
+      res.render('adminLogin',{error:"Invalid user"})
       req.session.attempt=false
     }else{
       res.header("Cache-Control", "no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0");
@@ -23,10 +23,10 @@ router.get('/', (req, res)=> {
 
 router.get('/adminHome',(req,res)=>{
   if(req.session.logged){
-    // userHelpers.getUsers().then((users)=>{
+    userHelpers.getAllUsers().then((users)=>{
     res.header("Cache-Control", "no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0");
-    res.render('adminHome')
-    // })
+    res.render('adminHome',{users})
+    })
     
   }else{
     res.redirect('/admin')
@@ -52,6 +52,44 @@ router.get('/adminLogout',(req,res)=>{
   res.redirect('/admin')
 });
 
+
+
+router.get('/addUser',(req,res)=>{
+  res.render('add-user')
+})
+
+router.post('/createUSer',(req,res)=>{
+  console.log("koooooooooooooo");
+  userHelpers.addUser(req.body,()=>{
+    res.redirect('/admin/adminHome')
+  })  
+})
+
+
+
+
+
+router.get("/deleteUser/:id",(req,res)=>{
+  let userId=req.params.id
+  userHelpers.deleteUser(userId).then(()=>{
+    res.redirect('/admin/adminHome')
+  })
+})
+
+router.get("/editUser/:id",async(req,res)=>{
+
+  let user=await userHelpers.getUserDetails(req.params.id)
+  console.log(user);
+  res.render('edit-user',{user})
+})
+
+router.post("/editedUser/:id",(req,res)=>{ 
+
+  userHelpers.updateUser(req.params.id,req.body).then(()=>{
+    
+    res.redirect('/admin')
+  })  
+})
 
 
 

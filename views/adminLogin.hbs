@@ -25,10 +25,12 @@
                         <p class="tagline">Use here to login.</p>
                     </div>
                     <div class="login-form">
-                        <form action="/admin/adLogin" method="POST">
+                        <form action="/admin/adLogin" method="POST" onsubmit="adminLoginAllCheck()">
                             <hr class="hr-text" data-content="or">
-                            <input type="text" class="form__input mb-8" name="email" id="emailOrUsername" placeholder="Email address ">
-                            <input type="password" class="form__input mb-8" name="password" id="emailOrUsername" placeholder="Password">
+                            <input type="text" onkeyup="adminEmailCheck()" class="form__input mb-8" name="email" id="adminEmailText" placeholder="Email address ">
+                            <div style=" height: 20px; margin-bottom: 5px; width: 18rem; "><span style="color: #D8000C;" id="adminEmailSpan"></span></div>
+                            <input type="password" onkeyup="adminPassCheck()" class="form__input mb-8" name="password" id="adminPassText" placeholder="Password">
+                            <div style=" height: 20px; margin-bottom: 5px; width: 18rem; "><span style="color: #D8000C;" id="adminPassSpan">{{error}}</span></div>
                             <div class="blank_space"></div>
                             <button class="button btn-submit button_green border-none text-white mb-8">
                                 Continue

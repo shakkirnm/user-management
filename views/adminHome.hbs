@@ -30,7 +30,15 @@
 
 <section style="padding-top: 13rem;">
     <div class="container">
-        <table class="table">
+      <div class="row">
+        <div>
+          <a href="/admin/addUser" class="btn btn-success mb-4">Add User</a>
+        </div>
+        <div class="ml-auto">
+          <input class="form-control rounded" type="text" id="searchInp" onkeyup="search()" placeholder="Search your name.." title="Type in a name">
+        </div>
+      </div>
+  <table class="table" id="userTable">
   <thead>
     <tr>
       <th scope="col">Name</th>
@@ -40,14 +48,14 @@
     </tr>
   </thead>
   <tbody>
-      {{!-- {{#each use}} --}}
+      {{#each users}}
     <tr>
-      <th scope="row">{{this.name}}abc</th>
-      <td>{{this.email}}def</td>
-      <td><a href=""><i class="fas fa-user-edit"></i></a></td>
-      <td><a href=""><i class="fas fa-trash"></i></a></td>
+      <th scope="row">{{this.name}}</th>
+      <td>{{this.email}}</td>
+      <td><a href="/admin/editUser/{{this._id}}"><i class="fas fa-user-edit"></i></a></td>
+      <td><a href="/admin/deleteUser/{{this._id}}" onclick="return confirm('Do u want to delete {{this.name}} ?')"><i class="fas fa-trash"></i></a></td>
     </tr>
-    {{!-- {{/each}} --}}
+    {{/each}}
     </tbody>
     </table>
     </div>

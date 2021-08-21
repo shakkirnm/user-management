@@ -20,16 +20,18 @@ router.get("/", (req, res) => {
     }else{
         if(req.session.attempt){
             res.header("Cache-Control", "no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0");
-            res.render("login");
+            res.render("login",{layout :null,error :"Invalid user"});
             req.session.attempt = false;
         }else{
             res.header("Cache-Control","no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0");
-            res.render("login")
+            res.render("login",{layout :null})
         }
     }
 });
 
 router.post("/signup",(req,res)=>{
+    console.log("haaaaaiiiiiiiiiiiiiiiiiiiiiiiiiii")
+    console.log(req.body)
     userHelpers.doSignup(req.body).then((response)=>{
         if(response){
             req.session.isLogged = true;
