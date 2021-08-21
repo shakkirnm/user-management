@@ -1,0 +1,48 @@
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  	<title>Admin Login</title>
+
+	<link rel="apple-touch-icon" sizes="180x180" href="https://mazipan.github.io/login-page-css/favicon/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="https://mazipan.github.io/login-page-css/favicon/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="https://mazipan.github.io/login-page-css/favicon/favicon-16x16.png">
+	<link rel="manifest" href="https://mazipan.github.io/login-page-css/manifest.json" />
+	<meta name="msapplication-TileColor" content="#fdcb04" />
+	<meta name="theme-color" content="#fdcb04" />
+    <link rel='stylesheet' href='/stylesheets/adminLogin.css'/>
+</head>
+
+<body>
+    <div class="container mb-50 padd fontfam">
+        <div class="main">
+            <div class="card">
+                <div class="mobile-device">
+                    <div class="heading">
+                        <div class="logo">
+                            <img src="/images/adminlogin.svg" style="height: 100px;">
+                        </div>
+                        <p class="tagline">Use here to login.</p>
+                    </div>
+                    <div class="login-form">
+                        <form action="/admin/adLogin" method="POST">
+                            <hr class="hr-text" data-content="or">
+                            <input type="text" class="form__input mb-8" name="email" id="emailOrUsername" placeholder="Email address ">
+                            <input type="password" class="form__input mb-8" name="password" id="emailOrUsername" placeholder="Password">
+                            <div class="blank_space"></div>
+                            <button class="button btn-submit button_green border-none text-white mb-8">
+                                Continue
+                            </button>
+                            <div class="blank_space"></div>
+                            
+                            <div class="blank_space"></div>
+                        </form>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        
+    </div>
+
+</body>

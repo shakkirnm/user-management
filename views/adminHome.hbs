@@ -1,0 +1,55 @@
+<header class="headerSection position-fixed fontfam">
+        <div class="container">
+            <div class="col-md-12">
+            <div class="row">
+                <div class="homeHeadLeft">
+                    <h2>Admin Panel</h2>
+                </div>
+                <div class="homeHeadRight"> 
+                    <nav class="navbar navbar-expand-lg navbar-light ">
+                        <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" 
+                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" 
+                        aria-expanded="false" aria-label="Toggle navigation">
+                          <span class="navbar-toggler-icon " ></span>
+                        </button>
+                      
+                        <div class="collapse navbar-collapse ml-auto" id="navbarSupportedContent">
+                          <ul class="navbar-nav ml-auto">
+                            <li class="nav-item">
+                              <a class="nav-link " href="/admin/adminLogout">Logout</a>
+                            </li>
+                        </ul>
+                        </div>
+                      </nav>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+    </header>
+
+<section style="padding-top: 13rem;">
+    <div class="container">
+        <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Email</th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+      {{!-- {{#each use}} --}}
+    <tr>
+      <th scope="row">{{this.name}}abc</th>
+      <td>{{this.email}}def</td>
+      <td><a href=""><i class="fas fa-user-edit"></i></a></td>
+      <td><a href=""><i class="fas fa-trash"></i></a></td>
+    </tr>
+    {{!-- {{/each}} --}}
+    </tbody>
+    </table>
+    </div>
+</section>
+

@@ -1,0 +1,63 @@
+<header class="headerSection position-fixed fontfam">
+        <div class="container">
+            <div class="col-md-12">
+            <div class="row">
+                <div class="homeHeadLeft">
+                    <h2>Shopping Cart</h2>
+                </div>
+                <div class="homeHeadRight"> 
+                    <nav class="navbar navbar-expand-lg navbar-light ">
+                        <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" 
+                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" 
+                        aria-expanded="false" aria-label="Toggle navigation">
+                          <span class="navbar-toggler-icon " ></span>
+                        </button>
+                      
+                        <div class="collapse navbar-collapse ml-auto" id="navbarSupportedContent">
+                          <ul class="navbar-nav ml-auto">
+                            <li class="nav-item active">
+                              <a class="nav-link " href="/">Products <span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item active">
+                              <a class="nav-link " href="#">Cart <span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item active">
+                              <a class="nav-link " href="#">Orders <span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item">
+                              <a class="nav-link " href="/logout">Logout</a>
+                            </li>
+                        </ul>
+                        </div>
+                      </nav>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+    </header>
+
+<section>
+    <section class="p-5 cardSection fontfam">        
+        <div class="container padd">
+            <div class="text-center p-5">
+                <h1>Products</h1>
+            </div>
+                <div class="row justify-content-center">
+                  {{#each products}}  
+                    <div class="p-4">
+                        <div class="card ca" style="width: 18rem;">
+                            <img class="card-img-top" src="{{this.image}}" alt="Card image cap">
+                            <div class="card-body">
+                              <h5 class="card-title">{{this.name}}</h5>
+                              <p class="card-text">{{this.about}}</p>
+                              <button class="cardBtn">Add to Cart</button>
+                              <button class="cardBtn">Shop Now</button>
+                            </div>
+                        </div>
+                    </div>
+                    {{/each}}
+                </div>   
+        </div>
+    </section> 
+</section>
